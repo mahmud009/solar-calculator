@@ -5,11 +5,14 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import { HomeRounded, AccountBalanceRounded } from "@material-ui/icons";
+import PaymentIcon from "images/payment.svg";
+import SavingsIcon from "images/savings.svg";
 
 export default function Plan({ result }) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  // console.log(PaymentIcon);
 
   const classes = useStyles();
   return (
@@ -22,8 +25,8 @@ export default function Plan({ result }) {
 
       <Box mt={2} className={classes.planContent}>
         <Box className={classes.paymentSection}>
-          <Box className={classes.paymentIconBox} textAlign="center" p={1}>
-            <HomeRounded className={classes.icon} />
+          <Box className={classes.paymentIconBox} textAlign="center" p={2}>
+            <PaymentIcon className={classes.icon} />
           </Box>
           <Box className={classes.paymentContent} p={1}>
             <Box textAlign="center">
@@ -68,12 +71,26 @@ export default function Plan({ result }) {
                 ${result.payment.totalCost}
               </Typography>
             </Box>
+
+            <Box textAlign="center" mt={2}>
+              <Typography
+                variant="subtitle1"
+                style={{ color: "white", fontSize: sm ? 12 : 16 }}
+              >
+                Annual Cost
+              </Typography>
+            </Box>
+            <Box textAlign="center">
+              <Typography variant="subtitle1" style={{ color: "white" }}>
+                ${result.payment.totalCost / (result.month / 12)}
+              </Typography>
+            </Box>
           </Box>
         </Box>
 
         <Box className={classes.savingsSection}>
-          <Box className={classes.savingsIconBox} textAlign="center" p={1}>
-            <AccountBalanceRounded className={classes.icon} />
+          <Box className={classes.savingsIconBox} textAlign="center" p={2}>
+            <SavingsIcon className={classes.icon} />
           </Box>
           <Box className={classes.savingsContent} p={1}>
             <Box textAlign="center">
@@ -118,6 +135,20 @@ export default function Plan({ result }) {
                 ${result.savings.totalCost}
               </Typography>
             </Box>
+
+            <Box textAlign="center" mt={2}>
+              <Typography
+                variant="subtitle1"
+                style={{ color: "white", fontSize: sm ? 12 : 16 }}
+              >
+                Annual Benifits
+              </Typography>
+            </Box>
+            <Box textAlign="center">
+              <Typography variant="subtitle1" style={{ color: "white" }}>
+                ${result.savings.totalCost / (result.month / 12)}
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -149,7 +180,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 4,
   },
   icon: {
-    fontSize: 80,
+    width: 60,
     color: "white",
   },
 }));

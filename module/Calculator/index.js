@@ -35,7 +35,7 @@ export default function Calculator() {
   const classes = useStyles();
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  const [selectedMonths, setSelectedMonths] = useState([12]);
+  const [selectedMonths, setSelectedMonths] = useState([]);
   const [months] = useState([12, 24, 36, 48, 60, 72]);
   const [results, setResults] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -59,10 +59,6 @@ export default function Calculator() {
   const { values, resetForm } = formik;
 
   const handleMonthSelection = (month) => {
-    if (month === 12) {
-      return;
-    }
-
     let isExists = selectedMonths.indexOf(month) >= 0 ? true : false;
 
     if (!isExists) {
@@ -106,13 +102,31 @@ export default function Calculator() {
   function calculateSavings({ values, month }) {
     let yearCount = month / 12;
     let weeks = 52;
+    let totalWeeks = yearCount * weeks;
     let { systemSize, efficiency } = values;
-    let perWeek = ((systemSize * 0.18 * 7 * 3.9 * efficiency) / 100).toFixed(2);
-    let totalCost = (perWeek * weeks * yearCount).toFixed(2);
+    let energyCost = 0.25;
+    // let perWeek = ((systemSize * 0.18 * 7 * 3.9 * efficiency) / 100).toFixed(2);
+    //let totalCost = (perWeek * weeks * yearCount).toFixed(2);
+
+    let yearlyCost = (systemSize * 3.9 * energyCost * efficiency * 365) / 100;
+    let twoYearCost = yearlyCost + (yearlyCost * 3) / 100;
+    let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
+    let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
+    let fiveYearCost = fourYearCost + (fourYearCost * 3) / 100;
+    let sixYearCost = fiveYearCost + (fiveYearCost * 3) / 100;
+
+    let costs = new Map([
+      [1, yearlyCost],
+      [2, twoYearCost],
+      [3, threeYearCost],
+      [4, fourYearCost],
+      [5, fiveYearCost],
+      [6, sixYearCost],
+    ]);
 
     return {
-      perWeek,
-      totalCost,
+      perWeek: (costs.get(yearCount) / totalWeeks).toFixed(2),
+      totalCost: costs.get(yearCount).toFixed(2),
     };
   }
 
@@ -146,7 +160,7 @@ export default function Calculator() {
           <Grid item xs={12} lg={6}>
             <Paper variant="outlined">
               <Box p={3}>
-                <CalculationForm {...{ formik, resetFields }} />
+                <CalculationForm {...{ formik, resetFields, selectedMonths }} />
               </Box>
             </Paper>
           </Grid>

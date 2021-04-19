@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   TextField,
@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import AttachMoneyRoundedIcon from "@material-ui/icons/AttachMoneyRounded";
 
-export default function InputForm({ formik, resetFields }) {
+export default function InputForm({ formik, resetFields, selectedMonths }) {
   const classes = useStyles();
   const { errors, values, handleChange, dirty, isValid, handleSubmit } = formik;
 
@@ -96,9 +96,10 @@ export default function InputForm({ formik, resetFields }) {
               fullWidth
               disableElevation
               variant="contained"
-              disabled={!(isValid && dirty)}
+              disabled={!(isValid && dirty) || selectedMonths.length <= 0}
             >
               APPLY
+              {/*  */}
             </Button>
           </Grid>
           <Grid item xs={6}>
