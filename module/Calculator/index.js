@@ -105,29 +105,29 @@ export default function Calculator() {
     let totalWeeks = yearCount * weeks;
     let { systemSize, efficiency } = values;
     let energyCost = 0.25;
-    // let perWeek = ((systemSize * 0.18 * 7 * 3.9 * efficiency) / 100).toFixed(2);
-    //let totalCost = (perWeek * weeks * yearCount).toFixed(2);
+    let perWeek = ((systemSize * 0.18 * 7 * 3.9 * efficiency) / 100).toFixed(2);
+    let totalCost = (perWeek * weeks * yearCount).toFixed(2);
 
-    let yearlyCost = (systemSize * 3.9 * energyCost * efficiency * 365) / 100;
+    // let yearlyCost = (systemSize * 3.9 * energyCost * efficiency * 365) / 100;
 
-    let twoYearCost = yearlyCost + (yearlyCost * 3) / 100;
-    let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
-    let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
-    let fiveYearCost = fourYearCost + (fourYearCost * 3) / 100;
-    let sixYearCost = fiveYearCost + (fiveYearCost * 3) / 100;
+    // let twoYearCost = yearlyCost + (yearlyCost * 3) / 100;
+    // let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
+    // let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
+    // let fiveYearCost = fourYearCost + (fourYearCost * 3) / 100;
+    // let sixYearCost = fiveYearCost + (fiveYearCost * 3) / 100;
 
-    let costs = new Map([
-      [1, yearlyCost],
-      [2, twoYearCost],
-      [3, threeYearCost],
-      [4, fourYearCost],
-      [5, fiveYearCost],
-      [6, sixYearCost],
-    ]);
+    // let costs = new Map([
+    //   [1, yearlyCost],
+    //   [2, twoYearCost],
+    //   [3, threeYearCost],
+    //   [4, fourYearCost],
+    //   [5, fiveYearCost],
+    //   [6, sixYearCost],
+    // ]);
 
     return {
-      perWeek: (costs.get(yearCount) / totalWeeks).toFixed(2),
-      totalCost: costs.get(yearCount).toFixed(2),
+      perWeek,
+      totalCost,
     };
   }
 
