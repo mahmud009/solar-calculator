@@ -82,7 +82,7 @@ export default function Plan({ result }) {
             </Box>
             <Box textAlign="center">
               <Typography variant="subtitle1" style={{ color: "white" }}>
-                ${result.payment.totalCost / (result.month / 12)}
+                ${(result.payment.totalCost / (result.month / 12)).toFixed(2)}
               </Typography>
             </Box>
           </Box>
@@ -146,7 +146,7 @@ export default function Plan({ result }) {
             </Box>
             <Box textAlign="center">
               <Typography variant="subtitle1" style={{ color: "white" }}>
-                ${result.savings.totalCost / (result.month / 12)}
+                ${(result.savings.totalCost / (result.month / 12)).toFixed(2)}
               </Typography>
             </Box>
           </Box>

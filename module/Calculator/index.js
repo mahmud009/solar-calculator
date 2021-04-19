@@ -109,6 +109,7 @@ export default function Calculator() {
     //let totalCost = (perWeek * weeks * yearCount).toFixed(2);
 
     let yearlyCost = (systemSize * 3.9 * energyCost * efficiency * 365) / 100;
+
     let twoYearCost = yearlyCost + (yearlyCost * 3) / 100;
     let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
     let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
