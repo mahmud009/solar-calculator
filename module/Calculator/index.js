@@ -105,44 +105,74 @@ export default function Calculator() {
     let totalWeeks = yearCount * weeks;
     let { systemSize, efficiency } = values;
     let energyCost = 0.25;
-    let perWeek = ((systemSize * 0.18 * 7 * 3.9 * efficiency) / 100).toFixed(2);
-    let totalCost = (perWeek * weeks * yearCount).toFixed(2);
+    let dailyAverage = 3.9;
 
-    // let yearlyCost = (systemSize * 3.9 * energyCost * efficiency * 365) / 100;
+    // Old calculation method
+    // let perWeek = ((systemSize * 0.18 * 7 * 3.9 * efficiency) / 100).toFixed(2);
+    // let totalCost = (perWeek * weeks * yearCount).toFixed(2);
 
-    // let twoYearCost = yearlyCost + (yearlyCost * 3) / 100;
-    // let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
-    // let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
-    // let fiveYearCost = fourYearCost + (fourYearCost * 3) / 100;
-    // let sixYearCost = fiveYearCost + (fiveYearCost * 3) / 100;
+    // New calculation
+    let dailyCost = (systemSize * dailyAverage * energyCost * efficiency) / 100;
+    let totalCost = dailyCost * 365;
+    let perWeek = (totalCost / weeks).toFixed(2);
 
-    // let costs = new Map([
-    //   [1, yearlyCost],
-    //   [2, twoYearCost],
-    //   [3, threeYearCost],
-    //   [4, fourYearCost],
-    //   [5, fiveYearCost],
-    //   [6, sixYearCost],
-    // ]);
+    let twoYearCost = totalCost + (totalCost * 3) / 100;
+    let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
+    let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
+    let fiveYearCost = fourYearCost + (fourYearCost * 3) / 100;
+    let sixYearCost = fiveYearCost + (fiveYearCost * 3) / 100;
+
+    let costs = new Map([
+      [1, totalCost.toFixed(2)],
+      [2, twoYearCost.toFixed(2)],
+      [3, threeYearCost.toFixed(2)],
+      [4, fourYearCost.toFixed(2)],
+      [5, fiveYearCost.toFixed(2)],
+      [6, sixYearCost.toFixed(2)],
+    ]);
 
     return {
       perWeek,
-      totalCost,
+      totalCost: costs.get(yearCount),
+    };
+  }
+
+  function generateChartData(monthSelected) {
+    let appMonths = [...months];
+
+    let index = appMonths.indexOf(monthSelected) + 1;
+    let resultMonths = appMonths.slice(0, index);
+
+    let chartCosts = [];
+    let chartSavings = [];
+    for (let month of resultMonths) {
+      let payment = calculatePayment({ values, month }).totalCost;
+      let savings = calculateSavings({ values, month }).totalCost;
+      chartCosts.push(payment);
+      chartSavings.push(savings);
+    }
+    let chartLabels = resultMonths.map((month) => `${month} month`);
+
+    return {
+      chartLabels,
+      chartCosts,
+      chartSavings,
     };
   }
 
   function generateResults() {
     let results = [];
+
     selectedMonths.forEach((month) => {
+      let chartData = generateChartData(month);
       let result = {
         month,
         payment: calculatePayment({ values, month }),
         savings: calculateSavings({ values, month }),
+        chartData,
       };
-
       results.push(result);
     });
-
     setResults(results);
   }
 
@@ -191,7 +221,7 @@ export default function Calculator() {
                     </Grid>
                     {results.map((result) => (
                       <Grid key={uuid()} item lg={6} xs={12}>
-                        <Plan {...{ result }} />
+                        <Plan {...{ result, selectedMonths }} />
                       </Grid>
                     ))}
                   </Grid>

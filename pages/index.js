@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
-import { Box } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import Calculator from "module/Calculator";
+import PlanChart from "module/Calculator/Chart";
 
 export default function Home() {
   return (
@@ -18,8 +19,6 @@ export default function Home() {
       <main className={styles.main}>
         <Calculator />
       </main>
-
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

@@ -7,12 +7,12 @@ import {
 } from "@material-ui/core";
 import PaymentIcon from "images/payment.svg";
 import SavingsIcon from "images/savings.svg";
+import PlanChart from "./Chart";
 
-export default function Plan({ result }) {
+export default function Plan({ result, selectedMonths }) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
-
-  // console.log(PaymentIcon);
+  const { chartData } = result;
 
   const classes = useStyles();
   return (
@@ -152,10 +152,19 @@ export default function Plan({ result }) {
           </Box>
         </Box>
       </Box>
+
+      <Box className={classes.planChart}>
+        <Box p={4}>
+          <PlanChart {...{ chartData }} />
+        </Box>
+      </Box>
     </Box>
   );
 }
 const useStyles = makeStyles((theme) => ({
+  planChart: {
+    backgroundColor: "#fafafa",
+  },
   planName: {
     fontFamily: "Poppins",
     fontSize: 20,
