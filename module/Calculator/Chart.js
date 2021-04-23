@@ -6,13 +6,13 @@ export default function PlanChart({ chartData }) {
   const [data, setData] = useState(null);
   const [options, setOptions] = useState(null);
   useEffect(() => {
-    let { chartLabels, chartCosts, chartSavings } = chartData;
+    let { chartLabels, charAnnualCosts, chartSavings } = chartData;
     let data = {
       labels: chartLabels,
       datasets: [
         {
           label: "Total Cost",
-          data: chartCosts,
+          data: charAnnualCosts,
           pointBackgroundColor: "white",
           pointBorderWidth: 1,
           pointRadius: 5,

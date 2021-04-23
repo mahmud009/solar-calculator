@@ -143,19 +143,20 @@ export default function Calculator() {
     let index = appMonths.indexOf(monthSelected) + 1;
     let resultMonths = appMonths.slice(0, index);
 
-    let chartCosts = [];
+    let charAnnualCosts = [];
     let chartSavings = [];
     for (let month of resultMonths) {
-      let payment = calculatePayment({ values, month }).totalCost;
+      let payment =
+        calculatePayment({ values, month }).totalCost / (month / 12);
       let savings = calculateSavings({ values, month }).totalCost;
-      chartCosts.push(payment);
+      charAnnualCosts.push(payment);
       chartSavings.push(savings);
     }
     let chartLabels = resultMonths.map((month) => `${month} month`);
 
     return {
       chartLabels,
-      chartCosts,
+      charAnnualCosts,
       chartSavings,
     };
   }
