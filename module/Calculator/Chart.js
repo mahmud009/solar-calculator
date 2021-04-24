@@ -18,8 +18,8 @@ export default function PlanChart({ chartData }) {
           pointRadius: 5,
           borderWidth: 2,
           tension: 0.5,
-          backgroundColor: ["#4C9A5A"],
-          borderColor: ["#4C9A5A"],
+          backgroundColor: ["#3361C5"],
+          borderColor: ["#3361C5"],
         },
         {
           label: "Estimated Benifits",
@@ -29,8 +29,9 @@ export default function PlanChart({ chartData }) {
           pointRadius: 5,
           borderWidth: 2,
           tension: 0.5,
-          backgroundColor: ["#3361C5"],
-          borderColor: ["#3361C5"],
+
+          backgroundColor: ["#4C9A5A"],
+          borderColor: ["#4C9A5A"],
         },
       ],
     };

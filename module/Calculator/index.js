@@ -15,6 +15,7 @@ import CalculationForm from "./CalculationForm";
 import Plan from "./Plan";
 import InfoContent from "./InfoContent";
 import { v4 as uuid } from "uuid";
+import { CollectionsOutlined } from "@material-ui/icons";
 
 const validationSchema = Yup.object().shape({
   totalAmount: Yup.number()
@@ -147,7 +148,9 @@ export default function Calculator() {
     let chartSavings = [];
     for (let month of resultMonths) {
       let payment =
-        calculatePayment({ values, month }).totalCost / (month / 12);
+        calculatePayment({ values, month: monthSelected }).totalCost /
+        (monthSelected / 12);
+
       let savings = calculateSavings({ values, month }).totalCost;
       charAnnualCosts.push(payment);
       chartSavings.push(savings);

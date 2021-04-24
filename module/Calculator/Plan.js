@@ -175,17 +175,17 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: "1fr 1fr",
   },
   paymentIconBox: {
-    backgroundColor: "#4C9A5A",
+    backgroundColor: "#3361C5",
   },
   paymentContent: {
-    backgroundColor: "#4C9A5A",
+    backgroundColor: "#3361C5",
     marginTop: 4,
   },
   savingsIconBox: {
-    backgroundColor: "#3361C5",
+    backgroundColor: "#4C9A5A",
   },
   savingsContent: {
-    backgroundColor: "#3361C5",
+    backgroundColor: "#4C9A5A",
     marginTop: 4,
   },
   icon: {
