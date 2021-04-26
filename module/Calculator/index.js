@@ -146,6 +146,7 @@ export default function Calculator() {
 
     let charAnnualCosts = [];
     let chartSavings = [];
+
     for (let month of resultMonths) {
       let payment =
         calculatePayment({ values, month: monthSelected }).totalCost /
@@ -157,10 +158,20 @@ export default function Calculator() {
     }
     let chartLabels = resultMonths.map((month) => `${month} month`);
 
+    let extra = new Map([
+      [12, [400]],
+      [24, [400, 600]],
+      [36, [400, 600, 800]],
+      [48, [400, 600, 800, 1000]],
+      [60, [400, 600, 800, 1000, 1200]],
+      [72, [400, 600, 800, 1000, 1200, 1400]],
+    ]);
+
     return {
       chartLabels,
       charAnnualCosts,
       chartSavings,
+      chartExtra: extra.get(monthSelected),
     };
   }
 

@@ -5,8 +5,9 @@ import { Box } from "@material-ui/core";
 export default function PlanChart({ chartData }) {
   const [data, setData] = useState(null);
   const [options, setOptions] = useState(null);
+
   useEffect(() => {
-    let { chartLabels, charAnnualCosts, chartSavings } = chartData;
+    let { chartLabels, charAnnualCosts, chartSavings, chartExtra } = chartData;
     let data = {
       labels: chartLabels,
       datasets: [
@@ -32,6 +33,18 @@ export default function PlanChart({ chartData }) {
 
           backgroundColor: ["#4C9A5A"],
           borderColor: ["#4C9A5A"],
+        },
+        {
+          label: "",
+          data: chartExtra,
+          // pointBackgroundColor: "trans",
+          // pointBorderWidth: 1,
+          pointRadius: 0,
+          borderWidth: 0,
+          tension: 0.5,
+
+          backgroundColor: ["transparent"],
+          // borderColor: ["#4C9A5A"],
         },
       ],
     };
