@@ -77,7 +77,7 @@ export default function Plan({ result, selectedMonths }) {
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
               >
-                Annual Cost
+                1st-Year Cost
               </Typography>
             </Box>
             <Box textAlign="center">
@@ -98,7 +98,7 @@ export default function Plan({ result, selectedMonths }) {
                 variant="h6"
                 style={{ color: "white", fontSize: sm ? 14 : 20 }}
               >
-                Estimated Savings
+                Estimated Benefits
               </Typography>
             </Box>
             <Box textAlign="center" mt={4}>
@@ -141,7 +141,7 @@ export default function Plan({ result, selectedMonths }) {
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
               >
-                Annual Benifits
+                1st-Year Benefits
               </Typography>
             </Box>
             <Box textAlign="center">

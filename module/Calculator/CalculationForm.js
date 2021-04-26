@@ -8,7 +8,6 @@ import {
   Typography,
   colors,
 } from "@material-ui/core";
-import AttachMoneyRoundedIcon from "@material-ui/icons/AttachMoneyRounded";
 
 export default function InputForm({ formik, resetFields, selectedMonths }) {
   const classes = useStyles();
@@ -32,7 +31,12 @@ export default function InputForm({ formik, resetFields, selectedMonths }) {
               helperText={errors.totalAmount}
               InputProps={{
                 endAdornment: (
-                  <AttachMoneyRoundedIcon className={classes.inputAdornment} />
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.inputAdornment}
+                  >
+                    $
+                  </Typography>
                 ),
               }}
             />
@@ -75,6 +79,81 @@ export default function InputForm({ formik, resetFields, selectedMonths }) {
               onChange={handleChange}
               error={errors.efficiency && true}
               helperText={errors.efficiency}
+              InputProps={{
+                endAdornment: (
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.inputAdornment}
+                  >
+                    %
+                  </Typography>
+                ),
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} lg={12}>
+            <TextField
+              required
+              size="small"
+              variant="outlined"
+              fullWidth
+              name="energyCost"
+              label="ENERGY COST"
+              value={values.energyCost}
+              onChange={handleChange}
+              error={errors.energyCost && true}
+              helperText={errors.energyCost}
+              InputProps={{
+                endAdornment: (
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.inputAdornment}
+                  >
+                    $
+                  </Typography>
+                ),
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} lg={12}>
+            <TextField
+              required
+              size="small"
+              variant="outlined"
+              fullWidth
+              name="yearlyIncreasing"
+              label="ELECTRICITY YEARLY INCREASING"
+              value={values.yearlyIncreasing}
+              onChange={handleChange}
+              error={errors.yearlyIncreasing && true}
+              helperText={errors.yearlyIncreasing}
+              InputProps={{
+                endAdornment: (
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.inputAdornment}
+                  >
+                    %
+                  </Typography>
+                ),
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} lg={12}>
+            <TextField
+              required
+              size="small"
+              variant="outlined"
+              fullWidth
+              name="environmentEfficiency"
+              label="ENVIRONMENT EFFICIENCY"
+              value={values.environmentEfficiency}
+              onChange={handleChange}
+              error={errors.environmentEfficiency && true}
+              helperText={errors.environmentEfficiency}
               InputProps={{
                 endAdornment: (
                   <Typography

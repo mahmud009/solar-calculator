@@ -30,6 +30,18 @@ const validationSchema = Yup.object().shape({
     .moreThan(1, "Please insert a valid efficiency")
     .positive("Please insert a valid efficiency")
     .typeError("Please insert a valid efficiency"),
+  energyCost: Yup.number()
+    .moreThan(0, "Please insert a valid energy cost")
+    .positive("Please insert a valid energy cost")
+    .typeError("Please insert a valid energy cost"),
+  yearlyIncreasing: Yup.number()
+    .moreThan(0, "Please insert a valid yearly increasing")
+    .positive("Please insert a valid yearly increasing")
+    .typeError("Please insert a valid yearly increasing"),
+  environmentEfficiency: Yup.number()
+    .moreThan(0, "Please insert a valid environment efficiency")
+    .positive("Please insert a valid yearly environment efficiency")
+    .typeError("Please insert a valid yearly environment efficiency"),
 });
 
 export default function Calculator() {
@@ -45,6 +57,9 @@ export default function Calculator() {
     totalAmount: "",
     systemSize: "",
     efficiency: "",
+    energyCost: "0.25",
+    yearlyIncreasing: "3",
+    environmentEfficiency: "100",
   };
 
   let onSubmit = async (values) => {
@@ -104,8 +119,14 @@ export default function Calculator() {
     let yearCount = month / 12;
     let weeks = 52;
     let totalWeeks = yearCount * weeks;
-    let { systemSize, efficiency } = values;
-    let energyCost = 0.25;
+    let {
+      systemSize,
+      efficiency,
+      energyCost,
+      yearlyIncreasing,
+      environmentEfficiency,
+    } = values;
+    // let energyCost = 0.25;
     let dailyAverage = 3.9;
 
     // Old calculation method
@@ -114,14 +135,14 @@ export default function Calculator() {
 
     // New calculation
     let dailyCost = (systemSize * dailyAverage * energyCost * efficiency) / 100;
-    let totalCost = dailyCost * 365;
+    let totalCost = (dailyCost * 365 * environmentEfficiency) / 100;
     let perWeek = (totalCost / weeks).toFixed(2);
 
-    let twoYearCost = totalCost + (totalCost * 3) / 100;
-    let threeYearCost = twoYearCost + (twoYearCost * 3) / 100;
-    let fourYearCost = threeYearCost + (threeYearCost * 3) / 100;
-    let fiveYearCost = fourYearCost + (fourYearCost * 3) / 100;
-    let sixYearCost = fiveYearCost + (fiveYearCost * 3) / 100;
+    let twoYearCost = totalCost + (totalCost * yearlyIncreasing) / 100;
+    let threeYearCost = twoYearCost + (twoYearCost * yearlyIncreasing) / 100;
+    let fourYearCost = threeYearCost + (threeYearCost * yearlyIncreasing) / 100;
+    let fiveYearCost = fourYearCost + (fourYearCost * yearlyIncreasing) / 100;
+    let sixYearCost = fiveYearCost + (fiveYearCost * yearlyIncreasing) / 100;
 
     let costs = new Map([
       [1, totalCost.toFixed(2)],
