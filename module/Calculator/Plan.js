@@ -135,7 +135,6 @@ export default function Plan({ result, selectedMonths }) {
                 ${result.savings.totalCost}
               </Typography>
             </Box>
-
             <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
