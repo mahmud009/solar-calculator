@@ -178,7 +178,17 @@ export default function Calculator() {
       charAnnualCosts.push(payment);
       chartSavings.push(savings);
     }
-    let chartLabels = resultMonths.map((month) => `${month} month`);
+    let chartLabels = resultMonths.map((month, index) => {
+      let monthsLength = resultMonths.length;
+      let resultIndex = index + 1;
+
+      // if (monthsLength === resultIndex) {
+      //   return `${month}   (month)`;
+      // } else {
+      //   return month;
+      // }
+      return [month, "Months"];
+    });
 
     let extra = new Map([
       [12, [400]],

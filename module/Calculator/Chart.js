@@ -51,22 +51,35 @@ export default function PlanChart({ chartData }) {
 
     let options = {
       scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
+        x: {
+          ticks: {
+            display: true,
+            align: "center",
+            // callback: function (val, index) {
+            //   // Hide the label of every 2nd dataset
+            //   return index % 2 === 0 ? this.getLabelForValue(val) : "";
+            // },
+          },
+        },
+        y: {
+          ticks: {
+            display: true,
+            align: "center",
+            callback: function (val, index) {
+              // Hide the label of every 2nd dataset
+              return `$ ${this.getLabelForValue(val)}`;
             },
           },
-        ],
+        },
       },
       plugins: {
         legend: {
-          position: "bottom",
+          position: "top",
         },
-        tooltip: {
-          // mode: "dataset",
-          title: "hello",
-        },
+        // tooltip: {
+        //   // mode: "dataset",
+        //   title: "hello",
+        // },
       },
     };
 
@@ -74,5 +87,9 @@ export default function PlanChart({ chartData }) {
     setOptions(options);
   }, [chartData]);
 
-  return <Box>{data && options && <Line data={data} options={options} />}</Box>;
+  return (
+    <Box width={300}>
+      {data && options && <Line data={data} height={400} options={options} />}
+    </Box>
+  );
 }

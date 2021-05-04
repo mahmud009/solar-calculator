@@ -153,7 +153,7 @@ export default function Plan({ result, selectedMonths }) {
       </Box>
 
       <Box className={classes.planChart}>
-        <Box p={4}>
+        <Box p={4} display="flex" justifyContent="center" alignItems="center">
           <PlanChart {...{ chartData }} />
         </Box>
       </Box>
