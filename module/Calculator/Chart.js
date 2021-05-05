@@ -75,6 +75,9 @@ export default function PlanChart({ chartData }) {
       plugins: {
         legend: {
           position: "top",
+          labels: {
+            boxWidth: 20,
+          },
         },
         // tooltip: {
         //   // mode: "dataset",
@@ -88,7 +91,7 @@ export default function PlanChart({ chartData }) {
   }, [chartData]);
 
   return (
-    <Box width={300}>
+    <Box width={250}>
       {data && options && <Line data={data} height={400} options={options} />}
     </Box>
   );

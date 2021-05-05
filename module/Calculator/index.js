@@ -57,7 +57,7 @@ export default function Calculator() {
     totalAmount: "",
     systemSize: "",
     efficiency: "",
-    energyCost: "0.25",
+    energyCost: "0.18",
     yearlyIncreasing: "3",
     environmentEfficiency: "100",
   };
@@ -191,12 +191,12 @@ export default function Calculator() {
     });
 
     let extra = new Map([
-      [12, [400]],
-      [24, [400, 600]],
-      [36, [400, 600, 800]],
-      [48, [400, 600, 800, 1000]],
-      [60, [400, 600, 800, 1000, 1200]],
-      [72, [400, 600, 800, 1000, 1200, 1400]],
+      [12, [600]],
+      [24, [600, 800]],
+      [36, [600, 800, 1000]],
+      [48, [600, 800, 1000, 1200]],
+      [60, [600, 800, 1000, 1200, 1400]],
+      [72, [600, 800, 1000, 1200, 1400, 1600]],
     ]);
 
     return {

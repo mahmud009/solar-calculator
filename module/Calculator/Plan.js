@@ -37,7 +37,7 @@ export default function Plan({ result, selectedMonths }) {
                 Your Payments
               </Typography>
             </Box>
-            <Box textAlign="center" mt={4}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="h1"
                 style={{
@@ -58,7 +58,7 @@ export default function Plan({ result, selectedMonths }) {
               </Typography>
             </Box>
 
-            <Box textAlign="center" mt={4}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
@@ -101,7 +101,7 @@ export default function Plan({ result, selectedMonths }) {
                 Estimated Benefits
               </Typography>
             </Box>
-            <Box textAlign="center" mt={4}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="h1"
                 style={{
@@ -122,7 +122,7 @@ export default function Plan({ result, selectedMonths }) {
               </Typography>
             </Box>
 
-            <Box textAlign="center" mt={4}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
