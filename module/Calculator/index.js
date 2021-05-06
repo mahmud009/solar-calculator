@@ -153,10 +153,15 @@ export default function Calculator() {
       [6, sixYearCost.toFixed(2)],
     ]);
 
+    console.log(costs.get(yearCount));
+
     return {
       perWeek,
       totalCost: costs.get(yearCount),
       yearlyEstimated: (costs.get(yearCount) * yearCount).toFixed(2),
+      perWeekNew: ((costs.get(yearCount) * yearCount) / yearCount / 52).toFixed(
+        2
+      ),
     };
   }
 

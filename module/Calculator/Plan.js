@@ -8,6 +8,7 @@ import {
 import PaymentIcon from "images/payment.svg";
 import SavingsIcon from "images/savings.svg";
 import PlanChart from "./Chart";
+import { useEffect } from "react";
 
 export default function Plan({ result, selectedMonths }) {
   const theme = useTheme();
@@ -110,7 +111,7 @@ export default function Plan({ result, selectedMonths }) {
                   fontWeight: 600,
                 }}
               >
-                ${result.savings.perWeek}
+                ${result.savings.perWeekNew}
               </Typography>
             </Box>
             <Box textAlign="center">

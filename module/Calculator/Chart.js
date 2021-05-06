@@ -91,7 +91,7 @@ export default function PlanChart({ chartData }) {
   }, [chartData]);
 
   return (
-    <Box width={250}>
+    <Box width={270}>
       {data && options && <Line data={data} height={400} options={options} />}
     </Box>
   );
