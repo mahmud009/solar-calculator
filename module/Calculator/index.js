@@ -138,6 +138,7 @@ export default function Calculator() {
     let totalCost = (dailyCost * 365 * environmentEfficiency) / 100;
     let perWeek = (totalCost / weeks).toFixed(2);
 
+    // For chart usage
     let twoYearCost = totalCost + (totalCost * yearlyIncreasing) / 100;
     let threeYearCost = twoYearCost + (twoYearCost * yearlyIncreasing) / 100;
     let fourYearCost = threeYearCost + (threeYearCost * yearlyIncreasing) / 100;
@@ -153,15 +154,35 @@ export default function Calculator() {
       [6, sixYearCost.toFixed(2)],
     ]);
 
-    console.log(costs.get(yearCount));
+    // for column usage
+    let twoYearSavings =
+      totalCost + (totalCost * yearlyIncreasing) / 100 + totalCost;
+    let threeYearSavings =
+      twoYearSavings + (twoYearSavings * yearlyIncreasing) / 100 + totalCost;
+    let fourYearSavings =
+      threeYearSavings +
+      (threeYearSavings * yearlyIncreasing) / 100 +
+      totalCost;
+    let fiveYearSavings =
+      fourYearSavings + (fourYearSavings * yearlyIncreasing) / 100 + totalCost;
+    let sixYearSavings =
+      fiveYearSavings + (fiveYearSavings * yearlyIncreasing) / 100 + totalCost;
+
+    let savings = new Map([
+      [1, totalCost.toFixed(2)],
+      [2, twoYearSavings.toFixed(2)],
+      [3, threeYearSavings.toFixed(2)],
+      [4, fourYearSavings.toFixed(2)],
+      [5, fiveYearSavings.toFixed(2)],
+      [6, sixYearSavings.toFixed(2)],
+    ]);
 
     return {
       perWeek,
       totalCost: costs.get(yearCount),
-      yearlyEstimated: (costs.get(yearCount) * yearCount).toFixed(2),
-      perWeekNew: ((costs.get(yearCount) * yearCount) / yearCount / 52).toFixed(
-        2
-      ),
+      yearlySavings: savings.get(yearCount),
+      firstYearSavings: totalCost.toFixed(2),
+      perWeekNew: (savings.get(yearCount) / yearCount / 52).toFixed(2),
     };
   }
 

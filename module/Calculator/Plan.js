@@ -133,7 +133,7 @@ export default function Plan({ result, selectedMonths }) {
             </Box>
             <Box textAlign="center">
               <Typography variant="subtitle1" style={{ color: "white" }}>
-                ${result.savings.yearlyEstimated}
+                ${result.savings.yearlySavings}
               </Typography>
             </Box>
             <Box textAlign="center" mt={2}>
@@ -146,7 +146,7 @@ export default function Plan({ result, selectedMonths }) {
             </Box>
             <Box textAlign="center">
               <Typography variant="subtitle1" style={{ color: "white" }}>
-                ${(result.savings.perWeek * 52).toFixed(2)}
+                ${result.savings.firstYearSavings}
               </Typography>
             </Box>
           </Box>
