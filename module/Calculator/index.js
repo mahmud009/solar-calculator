@@ -49,7 +49,7 @@ export default function Calculator() {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const [selectedMonths, setSelectedMonths] = useState([]);
-  const [months] = useState([12, 24, 36, 48, 60, 72]);
+  const [months] = useState([12, 24, 36, 48, 60]);
   const [results, setResults] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -97,9 +97,9 @@ export default function Calculator() {
     let factor = new Map([
       [12, 1.03],
       [24, 1.03],
-      [36, 1.05],
+      [36, 1.09],
       [48, 1.07],
-      [60, 1.1],
+      [60, 1.15],
       [72, 1.1],
     ]);
 
