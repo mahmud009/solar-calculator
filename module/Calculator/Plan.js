@@ -24,9 +24,9 @@ export default function Plan({ result, selectedMonths }) {
         </Typography>
       </Box>
 
-      <Box mt={1} className={classes.planContent}>
+      <Box mt={2} className={classes.planContent}>
         <Box className={classes.paymentSection}>
-          <Box className={classes.paymentIconBox} textAlign="center" p={1}>
+          <Box className={classes.paymentIconBox} textAlign="center" p={2}>
             <PaymentIcon className={classes.icon} />
           </Box>
           <Box className={classes.paymentContent} p={1}>
@@ -38,13 +38,7 @@ export default function Plan({ result, selectedMonths }) {
                 Your Payments
               </Typography>
             </Box>
-            <Box
-              textAlign="center"
-              display="flex"
-              alignItems="baseline"
-              justifyContent="center"
-              mt={1}
-            >
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="h1"
                 style={{
@@ -55,21 +49,17 @@ export default function Plan({ result, selectedMonths }) {
               >
                 ${result.payment.perWeek}
               </Typography>
+            </Box>
+            <Box textAlign="center">
               <Typography
                 variant="h6"
-                style={{
-                  color: "white",
-                  fontSize: 14,
-                  fontWeight: 400,
-                  marginLeft: 8,
-                }}
+                style={{ color: "white", fontSize: 20, fontWeight: 400 }}
               >
                 Per Week
               </Typography>
             </Box>
-            <Box textAlign="center"></Box>
 
-            <Box textAlign="center" mt={1}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
@@ -83,7 +73,7 @@ export default function Plan({ result, selectedMonths }) {
               </Typography>
             </Box>
 
-            <Box textAlign="center" mt={1}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
@@ -100,7 +90,7 @@ export default function Plan({ result, selectedMonths }) {
         </Box>
 
         <Box className={classes.savingsSection}>
-          <Box className={classes.savingsIconBox} textAlign="center" p={1}>
+          <Box className={classes.savingsIconBox} textAlign="center" p={2}>
             <SavingsIcon className={classes.icon} />
           </Box>
           <Box className={classes.savingsContent} p={1}>
@@ -112,13 +102,7 @@ export default function Plan({ result, selectedMonths }) {
                 Estimated Benefits
               </Typography>
             </Box>
-            <Box
-              textAlign="center"
-              display="flex"
-              alignItems="baseline"
-              justifyContent="center"
-              mt={1}
-            >
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="h1"
                 style={{
@@ -129,21 +113,17 @@ export default function Plan({ result, selectedMonths }) {
               >
                 ${result.savings.perWeekNew}
               </Typography>
+            </Box>
+            <Box textAlign="center">
               <Typography
                 variant="h6"
-                style={{
-                  color: "white",
-                  fontSize: 20,
-                  fontWeight: 400,
-                  fontSize: 14,
-                  marginLeft: 8,
-                }}
+                style={{ color: "white", fontSize: 20, fontWeight: 400 }}
               >
                 Per Week
               </Typography>
             </Box>
 
-            <Box textAlign="center" mt={1}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
@@ -156,7 +136,7 @@ export default function Plan({ result, selectedMonths }) {
                 ${result.savings.yearlySavings}
               </Typography>
             </Box>
-            <Box textAlign="center" mt={1}>
+            <Box textAlign="center" mt={2}>
               <Typography
                 variant="subtitle1"
                 style={{ color: "white", fontSize: sm ? 12 : 16 }}
@@ -209,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 4,
   },
   icon: {
-    width: 40,
+    width: 60,
     color: "white",
   },
 }));
